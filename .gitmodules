@@ -1,0 +1,6 @@
+[submodule "seal-compose-demo"]
+	path = seal-compose-demo
+	url = https://github.com/iamNCJ/seal-compose-demo
+[submodule "seal-search"]
+	path = seal-search
+	url = https://github.com/iamNCJ/seal-search
