@@ -24,24 +24,76 @@
 
     <div class="main">
         <div class="_col search">
-            <div class="_row basic-search">basic</div>
-            <div class="_row reference-search">ref</div>
+            <div class="_row basic-search">
+              <div class="basic-core">
+
+                <div class="card-panel white" id="core-card">
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="_row reference-search">
+              <div class="ref-core">
+                <div class="card-panel white" id="ref-card">
+
+                </div>
+              </div>
+            </div>
+
         </div>
-        <div class="_col compose">compose</div>
+
+        <div class="_col compose">
+          <div class="compose-core">
+            <div class="card-panel white" id="compose-card">
+
+            </div>
+          </div>
+        </div>
+
     </div>
+
+    <footer class="page-footer red darken-2">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2020 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
+
   </body>
   <style>
       html, body {
         height: 100%;
-        overflow-y: hidden;
+        /* overflow-y: hidden; */
       }
       .main {
         height: 100%;
-        background-image: url(img/bg.jpg);
+        margin-bottom: 2%;
+        /* background-image: url(img/bg.jpg); */
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        overflow-y: hidden;
+        /* overflow-y: hidden; */
       }
       ._col {
         float: left;
@@ -53,5 +105,23 @@
       ._row.basic-search {
         height: 40%;
       }
+      ._row.reference-search {
+        height: 59%;
+      }
+      ._col.compose {
+        width: 33.333%;
+        height: 100%;
+      }
+      .basic-core, .ref-core, .compose-core {
+        margin: 10px;
+        height: 100%;
+      }
+      #core-card, #ref-card, #compose-card {
+        height: 100%;
+      }
   </style>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+
 </html>
