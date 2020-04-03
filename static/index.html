@@ -44,17 +44,17 @@
                   </div>
                   <div class="basic-result-show">
                     
-                    <div id="panel-wrapper" class="card">
+                    <div id="panel-wrapper0" class="card">
                       <script>
-                        $('#panel-wrapper').hover(
-                          function () { $('#panel-wrapper').addClass('z-depth-2'); },
-                          function () { $('#panel-wrapper').removeClass('z-depth-2'); }
+                        $('#panel-wrapper0').hover(
+                          function () { $('#panel-wrapper0').addClass('z-depth-2'); },
+                          function () { $('#panel-wrapper0').removeClass('z-depth-2'); }
                           );
                       </script>
                       <div id="panel-container">
-                        <div id="canvasCantainer">
-                          <canvas id="canvas" style="width: 60%; height: 60%;">Your browser does not support HTML5 Canvas.</canvas>
-                          <script src="js/draw.js"></script>
+                        <div id="canvasCantainer0">
+                          <canvas id="canvas0" style="width: 100%; height: 100%;">Your browser does not support HTML5 Canvas.</canvas>
+                          <script src="js/draw0.js"></script>
                         </div>
                       </div>
                     </div>
@@ -78,6 +78,31 @@
         <div class="_col compose">
           <div class="compose-core">
             <div class="card-panel white" id="compose-card">
+              <div id="preview-zone" class="col s8 preview-zone">
+                <div id="panel-wrapper" class="card">
+                  <script>
+                    $('#panel-wrapper').hover(
+                      function () { $('#panel-wrapper').addClass('z-depth-2'); },
+                      function () { $('#panel-wrapper').removeClass('z-depth-2'); }
+                      );
+                  </script>
+                  <div id="panel-container">
+                    <div id="canvasCantainer">
+                      <canvas id="canvas" style="width: 100%; height: 100%;">Your browser does not support HTML5 Canvas.</canvas>
+                      <script src="js/draw.js"></script>
+                      <!-- <img id="canvasImage" src="" style="width: 100%; height: 100%;"> -->
+                    </div>
+                  </div>
+                </div>
+                <div id="list-container" class="row">
+                  <ul id="component-list" class="collection"><li class="collection-item"><div>草<a href="javascript:void(0);" onclick="removeComponent(this)" class="secondary-content"><i class="material-icons grey-text waves-effect">delete</i></a></div></li><li class="collection-item"><div>草<a href="javascript:void(0);" onclick="removeComponent(this)" class="secondary-content"><i class="material-icons grey-text waves-effect">delete</i></a></div></li></ul>
+                </div>
+                <div id="ops-bar">
+                  <a id="layout-button" class="waves-effect btn white black-text" href="javascript:autoLayout()"><i class="material-icons left">view_comfy</i>布局</a>
+                  <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);" download="seal.png"><i class="material-icons left">file_download</i>下载</a>
+                  <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);" download="seal.png"><i class="material-icons left">send</i>发送</a>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -114,7 +139,7 @@
   </body>
   <style>
       html, body {
-        height: 100%;
+        height: calc(100% - 40px);
         /* overflow-y: hidden; */
       }
       .main {
@@ -168,7 +193,7 @@
         width: 30%;
       }
 
-      #panel-wrapper {
+      #panel-wrapper0 {
 			width: 255px; 
       height: 255px;
 			/* margin: 80px auto; */
@@ -180,6 +205,8 @@
         width: 100%;
         column-count: 6;
         column-gap: 8px;
+        max-height: 100%;
+        overflow-y: auto;
       }
 
       #but {
@@ -212,7 +239,6 @@
         box-shadow: 0 0 10px #999;
         /* transform: scale(1.2); */
       }
-		}
   </style>
   
 
