@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+
+
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
@@ -31,15 +35,29 @@
                   <div class="left-search">
                     <div class="search-bar" style="display: flex;">
                       <div class="input-field" id="bar-itself">
-                        <input id="last_name" type="text" class="validate">
-                        <label for="last_name">Last Name</label>
+                        <input id="search-input" type="text" class="validate">
+                        <label for="keyword">查询篆字</label>
                       </div>
-                      <a class="btn-floating waves-effect waves-light red" style="margin:auto 0"><i class="material-icons">add</i></a>
+                      <a class="btn-floating waves-effect waves-light red" style="margin:auto 0"><i class="material-icons">search</i></a>
                     </div>
                     
                   </div>
                   <div class="basic-result-show">
-                    ghfgdfgdf
+                    
+                    <div id="panel-wrapper" class="card">
+                      <script>
+                        $('#panel-wrapper').hover(
+                          function () { $('#panel-wrapper').addClass('z-depth-2'); },
+                          function () { $('#panel-wrapper').removeClass('z-depth-2'); }
+                          );
+                      </script>
+                      <div id="panel-container">
+                        <div id="canvasCantainer">
+                          <canvas id="canvas" style="width: 60%; height: 60%;">Your browser does not support HTML5 Canvas.</canvas>
+                          <script src="js/draw.js"></script>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -49,7 +67,7 @@
             <div class="_row reference-search">
               <div class="ref-core">
                 <div class="card-panel white" id="ref-card">
-
+                  参考
                 </div>
               </div>
             </div>
@@ -148,9 +166,15 @@
       #bar-itself {
         width: 30%;
       }
+
+      #panel-wrapper {
+			width: 255px; 
+      height: 255px;
+			/* margin: 80px auto; */
+      top: 50%;
+      transform: translateY(-50%);
+		}
   </style>
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
 
 </html>
