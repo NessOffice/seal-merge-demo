@@ -28,7 +28,19 @@
               <div class="basic-core">
 
                 <div class="card-panel white" id="core-card">
-
+                  <div class="left-search">
+                    <div class="search-bar" style="display: flex;">
+                      <div class="input-field" id="bar-itself">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Last Name</label>
+                      </div>
+                      <a class="btn-floating waves-effect waves-light red" style="margin:auto 0"><i class="material-icons">add</i></a>
+                    </div>
+                    
+                  </div>
+                  <div class="basic-result-show">
+                    ghfgdfgdf
+                  </div>
                 </div>
 
               </div>
@@ -118,6 +130,23 @@
       }
       #core-card, #ref-card, #compose-card {
         height: 100%;
+      }
+
+      .left-search, .basic-result-show {
+        width: 50%;
+        height: 100%;
+        float: left;
+      }
+      .search-bar {
+        position: relative;
+        text-align: center;
+        left: 10%;
+        top: 40%;
+        width: 100%;
+        transform: translateY(-50%);
+      }
+      #bar-itself {
+        width: 30%;
       }
   </style>
   
