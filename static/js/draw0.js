@@ -1,14 +1,14 @@
 //set canvas
-const canvasContainer = document.getElementById('canvasContainer');
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const canvasContainer0 = document.getElementById('canvasContainer0');
+const canvas0 = document.getElementById('canvas0');
+const ctx0 = canvas0.getContext('2d');
 
-canvas.width = 1024;
-canvas.height = 1024;
+canvas0.width = 1024;
+canvas0.height = 1024;
 // canvas.setAttribute("hidden",true);
 
 //model to polygon
-function modelToPolygon(model,unicode,x1,y1,x2,y2) {
+function modelToPolygon0(model,unicode,x1,y1,x2,y2) {
     let modelRef = model[unicode]['onRefs'];
     let modelOff = model[unicode]['onOffsets'];
     let modelCon = model[unicode]['onContourIndices'];
@@ -56,30 +56,30 @@ function modelToPolygon(model,unicode,x1,y1,x2,y2) {
 }
 
 //polygon to canvas
-function polygonToCanvas(polygon) {
-    ctx.beginPath();
-    ctx.fillStyle="#000";
+function polygonToCanvas0(polygon) {
+    ctx0.beginPath();
+    ctx0.fillStyle="#000";
     for (let i = 0; i < polygon.length; i++) {
-        ctx.moveTo(polygon[i][0][0],polygon[i][0][1]);
+        ctx0.moveTo(polygon[i][0][0],polygon[i][0][1]);
         for (var j = 1;j < polygon[i].length;j++) {
- 	        ctx.lineTo(polygon[i][j][0],polygon[i][j][1]);
+ 	        ctx0.lineTo(polygon[i][j][0],polygon[i][j][1]);
         }
-        // ctx.closePath();
+        // ctx0.closePath();
     }
-    // ctx.closePath();
-    ctx.fill();
+    // ctx0.closePath();
+    ctx0.fill();
 }
 
-function draw(polygon) {
+function draw0(polygon) {
     //clearCanvas
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx0.clearRect(0,0,canvas0.width,canvas0.height);
     //draw
-    ctx.fillStyle="#fff";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx0.fillStyle="#fff";
+    ctx0.fillRect(0,0,canvas0.width,canvas0.height);
     for (var i = 0; i < polygon.length; i++) {
-        polygonToCanvas(polygon[i]);                                                              
+        polygonToCanvas0(polygon[i]);                                                              
     }
-    return saveAsPNG(canvas);
+    return saveAsPNG(canvas0);
 }
 
 // 从 canvas 提取图片 image
@@ -91,7 +91,7 @@ function draw(polygon) {
      
 // }     
 
-function saveAsPNG(canvas) {
+function saveAsPNG0(canvas) {
 	return canvas.toDataURL("image/png");
 }
 

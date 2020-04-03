@@ -1,0 +1,27 @@
+.drawbox-container {
+  /* position: absolute; */
+  background-size: 100% 100%;
+  transition: background-image 0.15s;
+}
+
+.drawbox-container:hover .drawbox-anchor {
+  opacity: 1;
+}
+
+.drawbox-anchor {
+  opacity: 0;
+  background: black;
+  border-radius: 2px;
+  border: white solid 1px;
+  transition: opacity 1s;
+}
+
+.drawbox-container:hover .drawbox-box {
+  opacity: 1;
+}
+
+.drawbox-box {
+  opacity: 0;
+  border: 2px dashed black;
+  transition: opacity 1s;
+}

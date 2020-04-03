@@ -1,254 +1,350 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
 
+  <link rel="stylesheet" href="css/DrawBoxPanel.css">
+	<!-- ResizeObserver polyfill -->
+	<script src="js/ResizeObserver.js"></script>
+	<script src="js/DrawBoxPanel.js"></script>
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
-  <title>Demo</title>
 
-  <body>
-      
-    <nav>
-        <div class="nav-wrapper red darken-2">
-        <a href="#" class="brand-logo"><i class="material-icons">account_balance</i>Demo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-        </ul>
-        </div>
-    </nav>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<title>Demo</title>
 
-    <div class="main">
-        <div class="_col search">
-            <div class="_row basic-search">
-              <div class="basic-core">
+<body>
 
-                <div class="card-panel white" id="core-card">
-                  <div class="left-search">
-                    <div class="search-bar" style="display: flex;">
-                      <div class="input-field" id="bar-itself">
-                        <input id="search-input" type="text" class="validate" onkeydown="if(event.keyCode === 13) search_seal()">
-                        <label for="search-input">查询篆字</label>
-                      </div>
-                      <a class="btn-floating waves-effect waves-light red" style="margin:auto 0" onclick = "search_seal();"><i class="material-icons">search</i></a>
-                    </div>
-                    
-                  </div>
-                  <div class="basic-result-show">
-                    
-                    <div id="panel-wrapper0" class="card">
-                      <script>
-                        $('#panel-wrapper0').hover(
-                          function () { $('#panel-wrapper0').addClass('z-depth-2'); },
-                          function () { $('#panel-wrapper0').removeClass('z-depth-2'); }
-                          );
-                      </script>
-                      <div id="panel-container">
-                        <div id="canvasCantainer0">
-                          <canvas id="canvas0" style="width: 100%; height: 100%;">Your browser does not support HTML5 Canvas.</canvas>
-                          <script src="js/draw0.js"></script>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  <nav>
+    <div class="nav-wrapper red darken-2">
+      <a href="#" class="brand-logo"><i class="material-icons">account_balance</i>Demo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main">
+    <div class="_col search">
+      <div class="_row basic-search">
+        <div class="basic-core">
+
+          <div class="card-panel white" id="core-card">
+            <div class="left-search">
+              <div class="search-bar" style="display: flex;">
+                <div class="input-field" id="bar-itself">
+                  <input id="search-input" type="text" class="validate"
+                    onkeydown="if(event.keyCode === 13) search_seal()">
+                  <label for="search-input">查询篆字</label>
                 </div>
-
+                <a>&nbsp;</a>
+                <a class="btn-floating waves-effect waves-light red" style="margin:auto 0" onclick="search_seal();"><i
+                    class="material-icons">search</i></a>
+                <a>&nbsp;</a>
+                <a class="btn-floating waves-effect waves-light red" style="margin:auto 0" href="javascript:addComponent();"><i
+                  class="material-icons">add</i></a>
               </div>
+
             </div>
+            <div class="basic-result-show">
 
-            <div class="_row reference-search">
-              <div class="ref-core">
-                <div class="card-panel white" id="ref-card">
-                  参考
-                  <div id="img-container" class="container" style="padding-left: 30px;"></div>
-                  <div id="modal-container"></div>
-                </div>
-              </div>
-            </div>
-        </div>
-
-        <div class="_col compose">
-          <div class="compose-core">
-            <div class="card-panel white" id="compose-card">
-              <div id="preview-zone" class="col s8 preview-zone">
-                <div id="panel-wrapper" class="card">
-                  <script>
-                    $('#panel-wrapper').hover(
-                      function () { $('#panel-wrapper').addClass('z-depth-2'); },
-                      function () { $('#panel-wrapper').removeClass('z-depth-2'); }
-                      );
-                  </script>
-                  <div id="panel-container">
-                    <div id="canvasCantainer">
-                      <canvas id="canvas" style="width: 100%; height: 100%;">Your browser does not support HTML5 Canvas.</canvas>
-                      <script src="js/draw.js"></script>
-                      <!-- <img id="canvasImage" src="" style="width: 100%; height: 100%;"> -->
-                    </div>
+              <div id="panel-wrapper0" class="card">
+                <script>
+                  $('#panel-wrapper0').hover(
+                    function () { $('#panel-wrapper0').addClass('z-depth-2'); },
+                    function () { $('#panel-wrapper0').removeClass('z-depth-2'); }
+                  );
+                </script>
+                <div id="panel-container0">
+                  <div id="canvasContainer0">
+                    <canvas id="canvas0" style="width: 100%; height: 100%;">Your browser does not support HTML5
+                      Canvas.</canvas>
+                    <script src="js/draw0.js"></script>
                   </div>
                 </div>
-                <div id="list-container" class="row">
-                  <ul id="component-list" class="collection"><li class="collection-item"><div>草<a href="javascript:void(0);" onclick="removeComponent(this)" class="secondary-content"><i class="material-icons grey-text waves-effect">delete</i></a></div></li><li class="collection-item"><div>草<a href="javascript:void(0);" onclick="removeComponent(this)" class="secondary-content"><i class="material-icons grey-text waves-effect">delete</i></a></div></li></ul>
-                </div>
-                <div id="ops-bar">
-                  <a id="layout-button" class="waves-effect btn white black-text" href="javascript:autoLayout()"><i class="material-icons left">view_comfy</i>布局</a>
-                  <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);" download="seal.png"><i class="material-icons left">file_download</i>下载</a>
-                  <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);" download="seal.png"><i class="material-icons left">send</i>发送</a>
-                </div>
               </div>
-
             </div>
           </div>
-        </div>
 
+        </div>
+      </div>
+
+      <div class="_row reference-search">
+        <div class="ref-core">
+          <div class="card-panel white" id="ref-card">
+            参考
+            <div id="img-container" class="container" style="padding-left: 30px;"></div>
+            <div id="modal-container"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <footer class="page-footer red darken-2">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+    <div class="_col compose">
+      <div class="compose-core">
+        <div class="card-panel white" id="compose-card">
+          <script type="text/javascript">
+            // Check if the character is Han
+            function isHan(char) {
+              var c = char.charCodeAt(0);
+              return c >= 0x4E00 && c <= 0x9FFF ||
+              c >= 0x3400 && c <= 0x4DBF ||
+              c >= 0x20000 && c <= 0x2A6DF ||
+              c >= 0x2A700 && c <= 0x2B73F ||
+              c >= 0x2B740 && c <= 0x2B81F ||
+              c >= 0x2B820 && c <= 0x2CEAF ||
+              c >= 0xF900 && c <= 0xFAFF ||
+              c >= 0x2F800 && c <= 0x2FA1F;
+            }
+        
+            function addComponent(fromKeyboard, forceVal, x1, y1, x2, y2) {
+              var template = '<li class="collection-item"><div>CONTENT<a href="javascript:void(0);" onclick="removeComponent(this)" class="secondary-content"><i class="material-icons grey-text waves-effect">delete</i></a></div></li>';
+              var textInput = $('#search-input');
+              var label = $('label[for=search-input]');
+              var val = forceVal || textInput.val();//获取文本域的值
+              var helper = $('#component-helper');
+              var list = $('#component-list');
+              var characters = val.split('').filter(isHan);
+              if (characters.length <= 0) {
+                helper.attr('data-error', '没有输入汉字');
+                textInput.addClass('invalid');
+              }
+              for (var i in characters) {
+                var character = characters[i];
+                if (availableComponents.indexOf(character) < 0) {
+                  Materialize.toast('没有部件“' + character + '”', 500);
+                } else { // Add to the list
+                  textInput.removeClass('invalid');
+                  textInput.val('');//替换文本域的值为‘’，即清空文本域
+                  if (!fromKeyboard) label.removeClass('active');
+                  list.append(template.replace('CONTENT', character));
+                // Modify the panel
+                currentComponents.push(character);
+      
+                thisCharacter = character;
+                console.log(thisCharacter);
+                getcomponentsJSON(thisCharacter);
+                // TODO: This line to be modified
+                panel.addBox(x1||50, y1||50, x2||205, y2||205);
+                // console.log("addComponent yes");
+                }
+                if(fromKeyboard) updateBoxBG();
+              }
+            }
+            function removeComponent(el) {
+              var aEls = $('#component-list .collection-item a.secondary-content');
+              var index = aEls.index(el);
+              var toRemove = $($('#component-list .collection-item')[index]);
+              toRemove.animate({ height: 0, lineHeight: 0, opacity: 0 }, 400, function () {
+                  toRemove.remove();
+                  // Modify the panel
+                currentComponents.splice(index, 1);
+                componentsModel.splice(index, 1);
+                  panel.removeBox(index);
+                  updateBoxBG();
+              });
+              }
+          </script>
+          <div id="preview-zone" class="col s8 preview-zone">
+            <div id="panel-wrapper" class="card">
+              <script>
+                $('#panel-wrapper').hover(
+                  function () { $('#panel-wrapper').addClass('z-depth-2'); },
+                  function () { $('#panel-wrapper').removeClass('z-depth-2'); }
+                );
+              </script>
+              <div id="panel-container">
+                <div id="canvasContainer">
+                  <canvas id="canvas" style="width: 100%; height: 100%;">Your browser does not support HTML5
+                    Canvas.</canvas>
+                  <script src="js/draw.js"></script>
+                  <!-- <img id="canvasImage" src="" style="width: 100%; height: 100%;"> -->
+                </div>
+              </div>
+            </div>
+            <div id="list-container" class="row">
+              <ul id="component-list" class="collection">
+              </ul>
+            </div>
+            <div id="ops-bar">
+              <a id="layout-button" class="waves-effect btn white black-text" href="javascript:autoLayout()"><i
+                  class="material-icons left">view_comfy</i>布局</a>
+              <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);"
+                download="seal.png"><i class="material-icons left">file_download</i>下载</a>
+              <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);"
+                download="seal.png"><i class="material-icons left">send</i>发送</a>
+            </div>
           </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-            </ul>
-          </div>
+
         </div>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
+    </div>
+
+  </div>
+
+  <footer class="page-footer red darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
         © 2020 Copyright Text
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-  </body>
-  <style>
-      html, body {
-        height: calc(100% - 40px);
-        /* overflow-y: hidden; */
-      }
-      .main {
-        height: 100%;
-        margin-bottom: 2%;
-        /* background-image: url(img/bg.jpg); */
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        /* overflow-y: hidden; */
-      }
-      ._col {
-        float: left;
-        height: 100%;
-      }
-      ._col.search {
-        width: 66.66667%;
-      }
-      ._row.basic-search {
-        height: 40%;
-      }
-      ._row.reference-search {
-        height: 59%;
-      }
-      ._col.compose {
-        width: 33.333%;
-        height: 100%;
-      }
-      .basic-core, .ref-core, .compose-core {
-        margin: 10px;
-        height: 100%;
-      }
-      #core-card, #ref-card, #compose-card {
-        height: 100%;
-      }
+</body>
+<style>
+  html,
+  body {
+    height: calc(100% - 40px);
+    /* overflow-y: hidden; */
+  }
 
-      .left-search, .basic-result-show {
-        width: 50%;
-        height: 100%;
-        float: left;
-      }
-      .search-bar {
-        position: relative;
-        text-align: center;
-        left: 10%;
-        top: 40%;
-        width: 100%;
-        transform: translateY(-50%);
-      }
-      #bar-itself {
-        width: 30%;
-      }
+  .main {
+    height: 100%;
+    margin-bottom: 2%;
+    /* background-image: url(img/bg.jpg); */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* overflow-y: hidden; */
+  }
 
-      #panel-wrapper0 {
-			width: 255px; 
-      height: 255px;
-			/* margin: 80px auto; */
-      top: 50%;
-      transform: translateY(-50%);
-      }
+  ._col {
+    float: left;
+    height: 100%;
+  }
 
-      #img-container {
-        width: 100%;
-        column-count: 8;
-        column-gap: 8px;
-        max-height: 100%;
-        overflow-y: auto;
-      }
+  ._col.search {
+    width: 66.66667%;
+  }
 
-      #but {
-        margin: 14px 0;
-      }
+  ._row.basic-search {
+    height: 40%;
+  }
 
-      .box {
-        background: white;
-        display: inline-block;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        margin: 5px;
-        width: 100%;
-        height: auto;
-        font-size: 20px;
-        color: #686868;
-        box-sizing: border-box;
-        border-radius: 10px;
-        /* border: 1px solid #ccc; */
-        box-shadow: 0 0 4px #999;
-        transition: all 500ms;
-      }
+  ._row.reference-search {
+    height: 59%;
+  }
 
-      .box .card-img {
-        width: 100%;
-      }
+  ._col.compose {
+    width: 33.333%;
+    height: 100%;
+  }
 
-      .box:hover {
-        box-shadow: 0 0 10px #999;
-        /* transform: scale(1.2); */
-      }
-  </style>
-  
+  .basic-core,
+  .ref-core,
+  .compose-core {
+    margin: 10px;
+    height: 100%;
+  }
 
-  <script>
-    function append_modal(cnt, path_img, neighbors) {
-      var neighbors_imgs = "";
-      for(var i = 0;i < neighbors.length;i++)
-        neighbors_imgs += `<img class="card-img" src="${neighbors[i]}" alt="图像无法加载">`;
-      $("#modal-container").append(
-        `<div id="modal-${cnt}" class="modal modal-fixed-footer">
+  #core-card,
+  #ref-card,
+  #compose-card {
+    height: 100%;
+  }
+
+  .left-search,
+  .basic-result-show {
+    width: 50%;
+    height: 100%;
+    float: left;
+  }
+
+  .search-bar {
+    position: relative;
+    text-align: center;
+    left: 10%;
+    top: 45%;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+
+  #bar-itself {
+    width: 30%;
+  }
+
+  #panel-wrapper0 {
+    width: 255px;
+    height: 255px;
+    /* margin: 80px auto; */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #img-container {
+    width: 100%;
+    column-count: 8;
+    column-gap: 8px;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
+  #but {
+    margin: 14px 0;
+  }
+
+  .box {
+    background: white;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    color: #686868;
+    box-sizing: border-box;
+    border-radius: 10px;
+    /* border: 1px solid #ccc; */
+    box-shadow: 0 0 4px #999;
+    transition: all 500ms;
+  }
+
+  .box .card-img {
+    width: 100%;
+  }
+
+  .box:hover {
+    box-shadow: 0 0 10px #999;
+    /* transform: scale(1.2); */
+  }
+</style>
+
+
+<script>
+  function append_modal(cnt, path_img, neighbors) {
+    var neighbors_imgs = "";
+    for (var i = 0; i < neighbors.length; i++)
+      neighbors_imgs += `<img class="card-img" src="${neighbors[i]}" alt="图像无法加载">`;
+    $("#modal-container").append(
+      `<div id="modal-${cnt}" class="modal modal-fixed-footer">
           <div class="modal-content">
             <img class="card-img" src="${path_img}" alt="图象无法加载">
             ${neighbors_imgs}
@@ -257,20 +353,20 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
           </div>
         </div>`);
-    }
-    function append_card(cnt, path_img) {
-      $("#img-container").append(
-        `<div class="box">
+  }
+  function append_card(cnt, path_img) {
+    $("#img-container").append(
+      `<div class="box">
           <a class="modal-trigger" href="#modal-${cnt}">
             <img class="card-img" src="${path_img}" alt="图象无法加载">
           </a>
           <!--img class="materialboxed card-img" src="${path_img}" alt="图象无法加载"-->
           <!--<div class="card-text">吱吱吱吱吱吱</div>-->
         </div>`);
-    }
-    function append_progress_bar() {
-      $("#img-container").append(
-        ` <div class="preloader-wrapper big active">
+  }
+  function append_progress_bar() {
+    $("#img-container").append(
+      ` <div class="preloader-wrapper big active">
             <div class="spinner-layer spinner-blue-only">
               <div class="circle-clipper left">
                 <div class="circle"></div>
@@ -282,40 +378,137 @@
             </div>
           </div>
         `);
+  }
+
+  function search_seal() {
+    // clear the document
+    $("#modal-container").empty();
+    $("#img-container").empty();
+
+    // avoid SQL injection
+    if ($("#search-input").val().length !== 1 || $("#search-input").val() === '\'') {
+      Materialize.toast('键入一个汉字!', 500);
+      return;
     }
-  
-    function search_seal() {
-      // clear the document
-      $("#modal-container").empty();
+
+    // query images and show them
+    append_progress_bar();
+    $.get("/query", { "keyword": $("#search-input").val() }, function (res) {
       $("#img-container").empty();
-  
-      // avoid SQL injection
-      if($("#search-input").val().length !== 1 || $("#search-input").val() === '\''){
-        Materialize.toast('键入一个汉字!', 500);
-        return;
+      var cnt = 0;
+      for (let key in res) {
+        var origin = res[key]["origin"] + "/";
+        var path_img = "resources/" + origin + res[key]["filename"];
+        var neighbors = res[key]["neighbors"].replace("\r", "").split("#");
+        neighbors = neighbors.map(function (item) { return "resources/" + origin + item });
+        append_card(cnt, path_img);
+        append_modal(cnt, path_img, neighbors);
+        cnt++;
       }
-  
-      // query images and show them
-      append_progress_bar();
-      $.get("/query", {"keyword":$("#search-input").val()}, function(res){
-        $("#img-container").empty();
-        var cnt = 0;
-        for(let key in res)
-        {
-          var origin = res[key]["origin"] + "/";
-          var path_img = "resources/" + origin + res[key]["filename"];
-          var neighbors = res[key]["neighbors"].replace("\r", "").split("#");
-          neighbors = neighbors.map(function(item){return "resources/" + origin + item});
-          append_card(cnt, path_img);
-          append_modal(cnt, path_img, neighbors);
-          cnt++;
-        }
-  
-        // activate the modals
-        for(var i = 0;i < cnt;i++)
-          $(`#modal-${i}`).modal();
-      });
+
+      // activate the modals
+      for (var i = 0; i < cnt; i++)
+        $(`#modal-${i}`).modal();
+    });
+  }
+
+  // The DrawBoxPanel
+  var panel;
+  // All available components, a list of strings
+  var availableComponents;
+  var getAvailableComponents = $.getJSON('available-components-index.json', function (val) { availableComponents = JSON.stringify(val); });
+
+  // var getAvailableComponentsPolygon = $.getJSON('available-components-polygon.json',
+  // 	function (val) { availableComponentsPolygon = val; });
+  // var getRequiredComponentsModel =  $.getJSON('available-components-model.json',
+  // 	function (val) { availableComponentsModel = val; });
+  // Components added
+  let thisCharacter;
+  var componentsModel = [];
+  var currentComponents = [];
+  var panelDimension = 1024;
+
+  function getcomponentsJSON(thisCharacter) {
+    let ThisComponentModel;
+    let modelURL = '/model/' + thisCharacter;
+    $.ajaxSettings.async = false;
+    getThisComponentModel = $.getJSON(modelURL, function (data) {
+      console.log(data);
+      componentsModel.push(data);
+      ThisComponentModel = data;
+    });
+    $.ajaxSettings.async = true;
+    // console.log("getcomponentsJSON yes");
+    return ThisComponentModel;
+  }
+
+  function getCoordinate() {
+    var result = [];
+    for (var i = 0; i < panel.nBoxes(); i++) {
+      var minMax = panel.getMinMax(i);
+      let unicodeHex = '\\u' + currentComponents[i].charCodeAt(0).toString(16);
+      // let unicodeHex = currentComponents[i];
+      let temp = [currentComponents[i] || unicodeHex, minMax[0], minMax[1], minMax[2], minMax[3]];
+      // console.log(temp);
+      result.push(temp);
     }
-  </script>
+    // console.log("getCoordinate yes");
+    return result;
+  }
+
+  function updateBoxBG() {
+    let polygon = [];
+    for (var i = 0; i < componentsModel.length; i++) {
+      let coordinate = getCoordinate();
+      polygon[i] = modelToPolygon(componentsModel[i], coordinate[i][0], coordinate[i][1], coordinate[i][2], coordinate[i][3], coordinate[i][4]);
+    }
+    imgURL = draw(polygon);
+    $('#download-button').attr('href', imgURL);
+    // console.log("updateBoxBG yes");
+  }
+
+  function autoLayout() {
+    var margin = 5, w = h = panelDimension;
+    switch (panel.nBoxes()) {
+      case 1: {
+        panel.setBox(0, margin, margin, w - margin, h - margin);
+      }; break;
+      case 2: {
+        panel.setBox(0, w / 2 + margin, margin, w - margin, h - margin);
+        panel.setBox(1, margin, margin, w / 2 - margin, h - margin);
+      }; break;
+      case 3: {
+        panel.setBox(0, w / 2 + margin, margin, w - margin, h - margin);
+        panel.setBox(1, margin, margin, w / 2 - margin, h / 2 - margin);
+        panel.setBox(2, margin, h / 2 + margin, w / 2 - margin, h - margin);
+      }; break;
+      case 4: {
+        panel.setBox(0, w / 2 + margin, margin, w - margin, h / 2 - margin);
+        panel.setBox(1, w / 2 + margin, h / 2 + margin, w - margin, h - margin);
+        panel.setBox(2, margin, margin, w / 2 - margin, h / 2 - margin);
+        panel.setBox(3, margin, h / 2 + margin, w / 2 - margin, h - margin);
+      }; break;
+      default: Materialize.toast('字数无法自动布局', 500);
+    }
+    updateBoxBG();
+    // console.log("autoLayout yes");
+  }
+
+  window.onload = function () {
+    panel = new DrawBoxPanel('panel-container',
+      { w: panelDimension, h: panelDimension });
+
+    getAvailableComponents.then(function () {
+      addComponent(false, '吾');
+      addComponent(false, '心');
+      addComponent(false, '寄');
+      addComponent(false, '之');
+      autoLayout();
+    });
+    panel.container.addEventListener('mousemove', function () {
+      updateBoxBG();
+    });
+  };
+</script>
 
 </html>
