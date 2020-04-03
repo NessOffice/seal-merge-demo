@@ -133,6 +133,8 @@
                 console.log(thisCharacter);
                 getcomponentsJSON(thisCharacter);
                 // TODO: This line to be modified
+                console.log('x1x1x1');
+                console.log(x1);
                 panel.addBox(x1||50, y1||50, x2||205, y2||205);
                 // console.log("addComponent yes");
                 }
@@ -414,6 +416,7 @@
 
   // The DrawBoxPanel
   var panel;
+  var panel0;
   // All available components, a list of strings
   var availableComponents;
   var getAvailableComponents = $.getJSON('available-components-index.json', function (val) { availableComponents = JSON.stringify(val); });
@@ -496,6 +499,8 @@
 
   window.onload = function () {
     panel = new DrawBoxPanel('panel-container',
+      { w: panelDimension, h: panelDimension });
+    panel0 = new DrawBoxPanel('panel-container0',
       { w: panelDimension, h: panelDimension });
 
     getAvailableComponents.then(function () {
