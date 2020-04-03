@@ -35,10 +35,10 @@
                   <div class="left-search">
                     <div class="search-bar" style="display: flex;">
                       <div class="input-field" id="bar-itself">
-                        <input id="search-input" type="text" class="validate">
-                        <label for="keyword">查询篆字</label>
+                        <input id="search-input" type="text" class="validate" onkeydown="if(event.keyCode === 13) search_seal()">
+                        <label for="search-input">查询篆字</label>
                       </div>
-                      <a class="btn-floating waves-effect waves-light red" style="margin:auto 0"><i class="material-icons">search</i></a>
+                      <a class="btn-floating waves-effect waves-light red" style="margin:auto 0" onclick = "search_seal();"><i class="material-icons">search</i></a>
                     </div>
                     
                   </div>
@@ -68,10 +68,11 @@
               <div class="ref-core">
                 <div class="card-panel white" id="ref-card">
                   参考
+                  <div id="img-container" class="container" style="padding-left: 30px;"></div>
+                  <div id="modal-container"></div>
                 </div>
               </div>
             </div>
-
         </div>
 
         <div class="_col compose">
@@ -173,8 +174,122 @@
 			/* margin: 80px auto; */
       top: 50%;
       transform: translateY(-50%);
+      }
+
+      #img-container {
+        width: 100%;
+        column-count: 6;
+        column-gap: 8px;
+      }
+
+      #but {
+        margin: 14px 0;
+      }
+
+      .box {
+        background: white;
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: 5px;
+        width: 100%;
+        height: auto;
+        font-size: 20px;
+        color: #686868;
+        box-sizing: border-box;
+        border-radius: 10px;
+        /* border: 1px solid #ccc; */
+        box-shadow: 0 0 4px #999;
+        transition: all 500ms;
+      }
+
+      .box .card-img {
+        width: 100%;
+      }
+
+      .box:hover {
+        box-shadow: 0 0 10px #999;
+        /* transform: scale(1.2); */
+      }
 		}
   </style>
   
+
+  <script>
+    function append_modal(cnt, path_img, neighbors) {
+      var neighbors_imgs = "";
+      for(var i = 0;i < neighbors.length;i++)
+        neighbors_imgs += `<img class="card-img" src="${neighbors[i]}" alt="图像无法加载">`;
+      $("#modal-container").append(
+        `<div id="modal-${cnt}" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <img class="card-img" src="${path_img}" alt="图象无法加载">
+            ${neighbors_imgs}
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
+          </div>
+        </div>`);
+    }
+    function append_card(cnt, path_img) {
+      $("#img-container").append(
+        `<div class="box">
+          <a class="modal-trigger" href="#modal-${cnt}">
+            <img class="card-img" src="${path_img}" alt="图象无法加载">
+          </a>
+          <!--img class="materialboxed card-img" src="${path_img}" alt="图象无法加载"-->
+          <!--<div class="card-text">吱吱吱吱吱吱</div>-->
+        </div>`);
+    }
+    function append_progress_bar() {
+      $("#img-container").append(
+        ` <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        `);
+    }
+  
+    function search_seal() {
+      // clear the document
+      $("#modal-container").empty();
+      $("#img-container").empty();
+  
+      // avoid SQL injection
+      if($("#search-input").val().length !== 1 || $("#search-input").val() === '\''){
+        Materialize.toast('键入一个汉字!', 500);
+        return;
+      }
+  
+      // query images and show them
+      append_progress_bar();
+      $.get("/query", {"keyword":$("#search-input").val()}, function(res){
+        $("#img-container").empty();
+        var cnt = 0;
+        for(let key in res)
+        {
+          var origin = res[key]["origin"] + "/";
+          var path_img = "resources/" + origin + res[key]["filename"];
+          var neighbors = res[key]["neighbors"].replace("\r", "").split("#");
+          neighbors = neighbors.map(function(item){return "resources/" + origin + item});
+          append_card(cnt, path_img);
+          append_modal(cnt, path_img, neighbors);
+          cnt++;
+        }
+  
+        // activate the modals
+        for(var i = 0;i < cnt;i++)
+          $(`#modal-${i}`).modal();
+      });
+    }
+  </script>
 
 </html>
