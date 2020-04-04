@@ -12,9 +12,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
 
   <link rel="stylesheet" href="css/DrawBoxPanel.css">
-	<!-- ResizeObserver polyfill -->
-	<script src="js/ResizeObserver.js"></script>
-	<script src="js/DrawBoxPanel.js"></script>
+  <!-- ResizeObserver polyfill -->
+  <script src="js/ResizeObserver.js"></script>
+  <script src="js/DrawBoxPanel.js"></script>
 
 
   <!--Let browser know website is optimized for mobile-->
@@ -26,6 +26,7 @@
 
   <nav>
     <div class="nav-wrapper red darken-2">
+      <a>&nbsp;&nbsp;</a>
       <a href="#" class="brand-logo"><i class="material-icons">account_balance</i>Demo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       </ul>
@@ -49,13 +50,23 @@
                 <a class="btn-floating waves-effect waves-light red" style="margin:auto 0" onclick="search_seal();"><i
                     class="material-icons">search</i></a>
                 <a>&nbsp;</a>
-                <a class="btn-floating waves-effect waves-light red" style="margin:auto 0" href="javascript:addComponent();"><i
-                  class="material-icons">add</i></a>
+                <a class="btn-floating waves-effect waves-light red" style="margin:auto 0"
+                  href="javascript:addComponent();"><i class="material-icons">add</i></a>
               </div>
 
             </div>
             <div class="basic-result-show">
-
+              <script>
+                function show_result_basic() {
+                  var character = $('#search-input').val();
+                  if (character === undefined) return;
+                  if (availableComponents.indexOf(character) < 0) {
+                    Materialize.toast('没有部件“' + character + '”', 500);
+                    return;
+                  }
+                  draw0(modelToPolygon0(getcomponentsJSON0(character), character, 5, 5, 1019, 1019));
+                }
+              </script>
               <div id="panel-wrapper0" class="card">
                 <script>
                   $('#panel-wrapper0').hover(
@@ -96,15 +107,15 @@
             function isHan(char) {
               var c = char.charCodeAt(0);
               return c >= 0x4E00 && c <= 0x9FFF ||
-              c >= 0x3400 && c <= 0x4DBF ||
-              c >= 0x20000 && c <= 0x2A6DF ||
-              c >= 0x2A700 && c <= 0x2B73F ||
-              c >= 0x2B740 && c <= 0x2B81F ||
-              c >= 0x2B820 && c <= 0x2CEAF ||
-              c >= 0xF900 && c <= 0xFAFF ||
-              c >= 0x2F800 && c <= 0x2FA1F;
+                c >= 0x3400 && c <= 0x4DBF ||
+                c >= 0x20000 && c <= 0x2A6DF ||
+                c >= 0x2A700 && c <= 0x2B73F ||
+                c >= 0x2B740 && c <= 0x2B81F ||
+                c >= 0x2B820 && c <= 0x2CEAF ||
+                c >= 0xF900 && c <= 0xFAFF ||
+                c >= 0x2F800 && c <= 0x2FA1F;
             }
-        
+
             function addComponent(fromKeyboard, forceVal, x1, y1, x2, y2) {
               var template = '<li class="collection-item"><div>CONTENT<a href="javascript:void(0);" onclick="removeComponent(this)" class="secondary-content"><i class="material-icons grey-text waves-effect">delete</i></a></div></li>';
               var textInput = $('#search-input');
@@ -126,19 +137,17 @@
                   textInput.val('');//替换文本域的值为‘’，即清空文本域
                   if (!fromKeyboard) label.removeClass('active');
                   list.append(template.replace('CONTENT', character));
-                // Modify the panel
-                currentComponents.push(character);
-      
-                thisCharacter = character;
-                console.log(thisCharacter);
-                getcomponentsJSON(thisCharacter);
-                // TODO: This line to be modified
-                console.log('x1x1x1');
-                console.log(x1);
-                panel.addBox(x1||50, y1||50, x2||205, y2||205);
-                // console.log("addComponent yes");
+                  // Modify the panel
+                  currentComponents.push(character);
+
+                  thisCharacter = character;
+                  console.log(thisCharacter);
+                  getcomponentsJSON(thisCharacter);
+                  // TODO: This line to be modified
+                  panel.addBox(x1 || 50, y1 || 50, x2 || 205, y2 || 205);
+                  // console.log("addComponent yes");
                 }
-                if(fromKeyboard) updateBoxBG();
+                if (fromKeyboard) updateBoxBG();
               }
             }
             function removeComponent(el) {
@@ -146,14 +155,14 @@
               var index = aEls.index(el);
               var toRemove = $($('#component-list .collection-item')[index]);
               toRemove.animate({ height: 0, lineHeight: 0, opacity: 0 }, 400, function () {
-                  toRemove.remove();
-                  // Modify the panel
+                toRemove.remove();
+                // Modify the panel
                 currentComponents.splice(index, 1);
                 componentsModel.splice(index, 1);
-                  panel.removeBox(index);
-                  updateBoxBG();
+                panel.removeBox(index);
+                updateBoxBG();
               });
-              }
+            }
           </script>
           <div id="preview-zone" class="col s8 preview-zone">
             <div id="panel-wrapper" class="card">
@@ -347,39 +356,39 @@
       neighbors_imgs += `<img class="card-img" src="${neighbors[i]}" alt="图像无法加载">`;
     $("#modal-container").append(
       `<div id="modal-${cnt}" class="modal modal-fixed-footer">
-          <div class="modal-content">
-            <img class="card-img" src="${path_img}" alt="图象无法加载">
-            ${neighbors_imgs}
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
-          </div>
-        </div>`);
+            <div class="modal-content">
+              <img class="card-img" src="${path_img}" alt="图象无法加载">
+              ${neighbors_imgs}
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
+            </div>
+          </div>`);
   }
   function append_card(cnt, path_img) {
     $("#img-container").append(
       `<div class="box">
-          <a class="modal-trigger" href="#modal-${cnt}">
-            <img class="card-img" src="${path_img}" alt="图象无法加载">
-          </a>
-          <!--img class="materialboxed card-img" src="${path_img}" alt="图象无法加载"-->
-          <!--<div class="card-text">吱吱吱吱吱吱</div>-->
-        </div>`);
+            <a class="modal-trigger" href="#modal-${cnt}">
+              <img class="card-img" src="${path_img}" alt="图象无法加载">
+            </a>
+            <!--img class="materialboxed card-img" src="${path_img}" alt="图象无法加载"-->
+            <!--<div class="card-text">吱吱吱吱吱吱</div>-->
+          </div>`);
   }
   function append_progress_bar() {
     $("#img-container").append(
       ` <div class="preloader-wrapper big active">
-            <div class="spinner-layer spinner-blue-only">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-                <div class="circle"></div>
-              </div><div class="circle-clipper right">
-                <div class="circle"></div>
+              <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
               </div>
             </div>
-          </div>
-        `);
+          `);
   }
 
   function search_seal() {
@@ -392,6 +401,8 @@
       Materialize.toast('键入一个汉字!', 500);
       return;
     }
+
+    show_result_basic();
 
     // query images and show them
     append_progress_bar();
@@ -438,6 +449,19 @@
     getThisComponentModel = $.getJSON(modelURL, function (data) {
       console.log(data);
       componentsModel.push(data);
+      ThisComponentModel = data;
+    });
+    $.ajaxSettings.async = true;
+    // console.log("getcomponentsJSON yes");
+    return ThisComponentModel;
+  }
+
+  function getcomponentsJSON0(thisCharacter) {
+    let ThisComponentModel;
+    let modelURL = '/model/' + thisCharacter;
+    $.ajaxSettings.async = false;
+    getThisComponentModel = $.getJSON(modelURL, function (data) {
+      console.log(data);
       ThisComponentModel = data;
     });
     $.ajaxSettings.async = true;

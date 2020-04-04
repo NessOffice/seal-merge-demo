@@ -76,9 +76,7 @@ function draw0(polygon) {
     //draw
     ctx0.fillStyle="#fff";
     ctx0.fillRect(0,0,canvas0.width,canvas0.height);
-    for (var i = 0; i < polygon.length; i++) {
-        polygonToCanvas0(polygon[i]);                                                              
-    }
+    polygonToCanvas0(polygon);              
     return saveAsPNG(canvas0);
 }
 
