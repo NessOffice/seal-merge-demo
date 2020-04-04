@@ -25,7 +25,7 @@ function modelToPolygon(model,unicode,x1,y1,x2,y2) {
             map[modelCon[i]] = map[modelCon[i]] + 1;
         }
     }
-    console.log(map);
+    // console.log(map);
 
     var obj = {};
     for(let i=0; i <= Object.getOwnPropertyNames(map).length; i++){

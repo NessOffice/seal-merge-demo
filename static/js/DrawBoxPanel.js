@@ -141,7 +141,7 @@
     var maxX = Math.max(this._rects[index][0][0], this._rects[index][1][0]);
     var minY = Math.min(this._rects[index][0][1], this._rects[index][1][1]);
     var maxY = Math.max(this._rects[index][0][1], this._rects[index][1][1]);
-    console.log(minX, maxX, minY, maxY);
+    // console.log(minX, maxX, minY, maxY);
     var top = this.fromY(minY), left = this.fromX(minX);
     var width = this.fromX(maxX) - left, height = this.fromY(maxY) - top;
     var div = this._boxElements[index];

@@ -141,7 +141,7 @@
                   currentComponents.push(character);
 
                   thisCharacter = character;
-                  console.log(thisCharacter);
+                  // console.log(thisCharacter);
                   getcomponentsJSON(thisCharacter);
                   // TODO: This line to be modified
                   panel.addBox(x1 || 50, y1 || 50, x2 || 205, y2 || 205);
@@ -185,13 +185,24 @@
               <ul id="component-list" class="collection">
               </ul>
             </div>
+            <script>
+              function seal_print() {
+                var string = imgURL;
+                var iframe = "<img src='" + string + "'></img>"
+                var x = window.open();
+                x.document.open();
+                x.document.write(iframe);
+                x.print();
+                x.document.close();
+              }
+            </script>
             <div id="ops-bar">
               <a id="layout-button" class="waves-effect btn white black-text" href="javascript:autoLayout()"><i
                   class="material-icons left">view_comfy</i>布局</a>
               <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);"
                 download="seal.png"><i class="material-icons left">file_download</i>下载</a>
-              <a id="download-button" class="waves-effect waves-light btn" href="javascript:void(0);"
-                download="seal.png"><i class="material-icons left">send</i>发送</a>
+              <a id="share-button" class="waves-effect waves-light btn" href="javascript:seal_print();"><i
+                  class="material-icons left">send</i>发送</a>
             </div>
           </div>
 
@@ -428,6 +439,7 @@
   // The DrawBoxPanel
   var panel;
   var panel0;
+  var imgURL;
   // All available components, a list of strings
   var availableComponents;
   var getAvailableComponents = $.getJSON('available-components-index.json', function (val) { availableComponents = JSON.stringify(val); });
@@ -447,7 +459,7 @@
     let modelURL = '/model/' + thisCharacter;
     $.ajaxSettings.async = false;
     getThisComponentModel = $.getJSON(modelURL, function (data) {
-      console.log(data);
+      // console.log(data);
       componentsModel.push(data);
       ThisComponentModel = data;
     });
@@ -461,7 +473,7 @@
     let modelURL = '/model/' + thisCharacter;
     $.ajaxSettings.async = false;
     getThisComponentModel = $.getJSON(modelURL, function (data) {
-      console.log(data);
+      // console.log(data);
       ThisComponentModel = data;
     });
     $.ajaxSettings.async = true;
@@ -491,6 +503,7 @@
     }
     imgURL = draw(polygon);
     $('#download-button').attr('href', imgURL);
+    // $('#share-button').attr('href', imgURL);
     // console.log("updateBoxBG yes");
   }
 
