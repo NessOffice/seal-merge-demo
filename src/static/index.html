@@ -192,7 +192,10 @@
                 var x = window.open();
                 x.document.open();
                 x.document.write(iframe);
-                x.print();
+                setTimeout(function () {
+                    console.log(2);
+                    x.print();
+                }, 50);
                 x.document.close();
               }
             </script>
