@@ -7,6 +7,8 @@ canvas.width = 1024;
 canvas.height = 1024;
 // canvas.setAttribute("hidden",true);
 
+stroke_width = 1.3;
+
 //model to polygon
 function modelToPolygon(model,unicode,x1,y1,x2,y2) {
     let modelRef = model[unicode]['onRefs'];
@@ -37,8 +39,8 @@ function modelToPolygon(model,unicode,x1,y1,x2,y2) {
     for (let i = 0; i < modelCon.length; i++) {
         // [x,y] 
         let x = []; 
-        x[0] = modelRef[i][0]/a + x1 + 1.3*modelOff[i][0];
-        x[1] = modelRef[i][1]/b + y1 + 1.3*modelOff[i][1];
+        x[0] = modelRef[i][0]/a + x1 + stroke_width*modelOff[i][0];
+        x[1] = modelRef[i][1]/b + y1 + stroke_width*modelOff[i][1];
         obj['arr'+arrCount][xCount] = x;
         if (modelCon[i]!==modelCon[i+1]) {
             polygon[arrCount] = obj['arr'+arrCount];

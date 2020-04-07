@@ -39,7 +39,7 @@
         <div class="basic-core">
 
           <div class="card-panel white" id="core-card">
-            <div class="left-search">
+            <div class="left-search" style="display: table">
               <div class="search-bar" style="display: flex;">
                 <div class="input-field" id="bar-itself">
                   <input id="search-input" type="text" class="validate"
@@ -54,7 +54,23 @@
                   href="javascript:addComponent();"><i class="material-icons">add</i></a>
               </div>
 
+              <div style="display: grid">
+              	<label style="left: 10%;position: relative;">字体粗细</label>
+                <div class="range-field">
+                  <input type="range" id="stroke_width" min="10" max="250" />
+                </div>
+              </div>
+              <script>
+                  $("#stroke_width").on('input', function(){
+                      stroke_width = $("#stroke_width")[0].value / 100;
+                      updateBoxBG();
+                      show_result_basic();
+                      
+                  });
+              </script>
+
             </div>
+            
             <div class="basic-result-show">
               <script>
                 function show_result_basic() {
@@ -250,7 +266,7 @@
   }
 
   .main {
-    height: 100%;
+    height: 120vh;
     margin-bottom: 2%;
     /* background-image: url(img/bg.jpg); */
     background-size: cover;
@@ -301,7 +317,17 @@
     float: left;
   }
 
+  .left-search
+  .range-field {
+  	position: relative;
+    left: 10%;
+    top: 45%;
+    width: 50%;
+    transform: translateY(-50%);
+  }
+
   .search-bar {
+  	margin: 30px 0 0 0;
     position: relative;
     text-align: center;
     left: 10%;
@@ -332,6 +358,11 @@
 
   #but {
     margin: 14px 0;
+  }
+  
+  #list-container {
+    overflow: auto;
+    height: 30vh;
   }
 
   .box {
@@ -437,6 +468,7 @@
       for (var i = 0; i < cnt; i++)
         $(`#modal-${i}`).modal();
     });
+    updateBoxBG();
   }
 
   // The DrawBoxPanel
@@ -448,9 +480,9 @@
   var getAvailableComponents = $.getJSON('available-components-index.json', function (val) { availableComponents = JSON.stringify(val); });
 
   // var getAvailableComponentsPolygon = $.getJSON('available-components-polygon.json',
-  // 	function (val) { availableComponentsPolygon = val; });
+  //     function (val) { availableComponentsPolygon = val; });
   // var getRequiredComponentsModel =  $.getJSON('available-components-model.json',
-  // 	function (val) { availableComponentsModel = val; });
+  //     function (val) { availableComponentsModel = val; });
   // Components added
   let thisCharacter;
   var componentsModel = [];
